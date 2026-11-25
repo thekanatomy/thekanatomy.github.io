@@ -204,12 +204,26 @@ html,body{overflow-x:hidden}
 .stk summary h3{grid-column:1;grid-row:2}
 .stk .pl{position:static;grid-column:2;grid-row:1/3}
 .stk h3{font-size:1.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* visionbrush feature */
+.vb{margin-top:var(--s6);background:var(--tile);border:1px solid var(--line);border-radius:1.75rem;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;text-align:left}
+.vbart{width:100%;height:100%;min-height:22rem;color:var(--ink);padding:var(--s5);border-right:1px solid var(--line)}
+.vbpath{stroke-dasharray:900;stroke-dashoffset:900;opacity:.5;animation:vbd 6s linear infinite}
+@keyframes vbd{to{stroke-dashoffset:0}}
+.vbeye{opacity:.35}
+.vbtxt{padding:var(--s5);display:flex;flex-direction:column;justify-content:center}
+.vblead{font-size:1.3125rem;line-height:1.38;letter-spacing:-.015em}
+.vbchips{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s3)}
+.vbchips span{font-size:.8125rem;color:var(--mute);border:1px solid var(--bd);border-radius:999px;padding:4px 12px}
+.vbtxt .btns{margin-top:var(--s4)}
+@media(max-width:860px){.vb{grid-template-columns:1fr}.vbart{min-height:12rem;border-right:0;border-bottom:1px solid var(--line);padding:var(--s3)}.vbtxt{padding:var(--s3)}.vblead{font-size:1.125rem}}
+@media(prefers-reduced-motion:reduce){.vbpath{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
 
 <canvas id="dust" aria-hidden="true"></canvas>
-<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#stack">Stack</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
+<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#visionbrush">VisionBrush</a><a href="#stack">Stack</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
 
 <header class="w hero">
  <div>
@@ -260,6 +274,24 @@ html,body{overflow-x:hidden}
  </div>
 </section>
 
+<section class="w center" id="visionbrush">
+ <p class="k rv">Also built</p>
+ <h2 class="rv">VisionBrush.<br><em>Draw with your eyes.</em></h2>
+ <div class="vb rv">
+  <svg class="vbart" viewBox="0 0 600 260" fill="none" aria-hidden="true">
+   <path class="vbpath" d="M40 190 C 120 60, 200 60, 250 140 S 380 230, 430 120 S 540 40, 560 90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+   <circle class="vbdot" r="9" fill="currentColor"><animateMotion dur="6s" repeatCount="indefinite" path="M40 190 C 120 60, 200 60, 250 140 S 380 230, 430 120 S 540 40, 560 90"/></circle>
+   <g class="vbeye" transform="translate(300 40)"><ellipse rx="34" ry="18" stroke="currentColor" stroke-width="2"/><circle r="8" fill="currentColor"/></g>
+  </svg>
+  <div class="vbtxt">
+   <p class="vblead">A drawing canvas for people with limited hand movement. Your gaze moves the brush; your voice starts and ends each stroke.</p>
+   <div class="vbchips"><span>Webcam eye tracking</span><span>Voice commands</span><span>Runs in the browser</span><span>Nothing recorded</span></div>
+   <details class="more"><summary>How it works</summary><p>You follow a few dots so it learns your eyes. Then say &ldquo;start&rdquo; and &ldquo;end&rdquo; to draw a stroke, and &ldquo;fix&rdquo; to snap shapes clean. No speech support? Hold your gaze to place points and close your eyes for a second to start or stop. Built as a three-person team for AME 434 at ASU.</p></details>
+   <div class="btns"><a class="btn p" href="https://thekanatomy.github.io/vision-brush/" target="_blank" rel="noopener">Try VisionBrush ↗</a></div>
+  </div>
+ </div>
+</section>
+
 <section class="w center" id="stack">
  <p class="k rv">The stack</p>
  <h2 class="rv">What I build with.</h2>
@@ -280,7 +312,6 @@ html,body{overflow-x:hidden}
  <p class="k rv">Also</p>
  <div class="rv" style="margin-top:24px">
   <details class="arow"><summary><b>ReadyCheck × Honeywell</b><p>Alert fatigue, first responders</p><span class="k">2026</span></summary><div class="ad">A course project with Honeywell on alert fatigue: first responders and aviation crews get so many alerts they stop trusting them. We researched the problem and presented a system to Honeywell in Nov 2026.</div></details>
-  <details class="arow"><summary><b>VisionBrush</b><p>ML for media arts</p><span class="k">2026</span></summary><div class="ad">A three-person machine-learning project for ASU's AME 434 course. TODO: one line on what it does and what you built.</div></details>
   <details class="arow"><summary><b>Psych for Life</b><p>Product Content Strategist</p><span class="k">2026</span></summary><div class="ad">ASU Psychology Department. I analyzed competitors' features and recommended product and marketing changes.</div></details>
   <details class="arow"><summary><b>Systech · AVS Livescape</b><p>Data analyst intern</p><span class="k">2024–25</span></summary><div class="ad">Two analyst internships in Chennai, working in SQL and Python. TODO: one result with a number.</div></details>
   <details class="arow"><summary><b>AIP Conf. Proc.</b><p>Co-author, published research</p><span class="k">2025</span></summary><div class="ad">&ldquo;Blockchain enhanced children healthcare.&rdquo; I did the data analysis on the childcare data. Presented at ICIRIAC 2024.</div></details>
