@@ -218,12 +218,26 @@ html,body{overflow-x:hidden}
 .vbtxt .btns{margin-top:var(--s4)}
 @media(max-width:860px){.vb{grid-template-columns:1fr}.vbart{min-height:12rem;border-right:0;border-bottom:1px solid var(--line);padding:var(--s3)}.vbtxt{padding:var(--s3)}.vblead{font-size:1.125rem}}
 @media(prefers-reduced-motion:reduce){.vbpath{stroke-dashoffset:0}}
+
+.stkgrid.two{grid-template-columns:1fr 1fr}
+.stk.big h3{font-size:2rem;white-space:normal}
+.stk.big summary{padding:var(--s5) var(--s4)}
+@media(max-width:860px){.stkgrid.two{grid-template-columns:1fr}.stk.big h3{font-size:1.5rem}.stk.big summary{padding:var(--s3)}}
+
+.psub{color:var(--mute);font-size:1.3125rem;line-height:1.38;letter-spacing:-.015em;max-width:40rem;margin:var(--s3) auto 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin:var(--s5) auto 0;max-width:56rem;border-top:1px solid var(--line);text-align:left}
+.steps div{padding:var(--s3) var(--s3) 0 0}
+.steps div+div{padding-left:var(--s3);border-left:1px solid var(--line)}
+.steps .n{font:.75rem "JetBrains Mono",monospace;color:var(--mute)}
+.steps h4{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin:var(--s1) 0 4px}
+.steps p{color:var(--mute);font-size:.9375rem;line-height:1.47}
+@media(max-width:860px){.psub{font-size:1.0625rem}.steps{grid-template-columns:1fr}.steps div+div{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:var(--s3)}.steps div{padding:var(--s2) 0 0}}
 </style>
 </head>
 <body>
 
 <canvas id="dust" aria-hidden="true"></canvas>
-<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#visionbrush">VisionBrush</a><a href="#stack">Stack</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
+<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#visionbrush">VisionBrush</a><a href="#stack">Stack</a><a href="#beyond">Beyond</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
 
 <header class="w hero">
  <div>
@@ -252,7 +266,13 @@ html,body{overflow-x:hidden}
 
 <section class="w center" id="deq">
  <p class="k rv">The problem</p>
- <h2 class="rv">You meet 30 people.<br><em>You follow up with 2.</em></h2>
+ <h2 class="rv">You meet dozens a month.<br><em>You remember a few.</em></h2>
+ <p class="psub rv">Founders, recruiters and business people meet people constantly, then forget who they were, what was said, and to follow up. Deq fixes that.</p>
+ <div class="steps rv">
+  <div><span class="n">01</span><h4>Remember</h4><p>Where you met, what you talked about.</p></div>
+  <div><span class="n">02</span><h4>Log</h4><p>Scan a card. Saved in seconds.</p></div>
+  <div><span class="n">03</span><h4>Follow up</h4><p>A nudge before the moment's gone.</p></div>
+ </div>
  <details class="more rv"><summary>Why I built it</summary><p>The day I left India, a well-connected businessman told me to stay in touch. Months later I couldn't remember his name, his face or his number. Deq exists so that doesn't happen again.</p></details>
  <div class="bento">
   <div class="tile s4 rv"><div class="viz"><div class="bar"><i style="width:90%"></i></div><div class="bar"><i style="width:37%;background:#a78bfa"></i></div></div><p class="k">Discovery</p><h3>90% loved it. 37% tried it.</h3><details class="more"><summary>What I learned</summary><p>I pitched it to 19 founders. Most asked "Is it on the App Store?" before anything else, so iOS became the top priority.</p></details></div>
@@ -308,6 +328,15 @@ html,body{overflow-x:hidden}
  </div>
 </section>
 
+<section class="w center" id="beyond">
+ <p class="k rv">Beyond code</p>
+ <h2 class="rv">I study people.<br><em>Then I tell stories about it.</em></h2>
+ <div class="stkgrid two">
+  <details class="stk big rv"><summary><span class="k">Human psychology</span><h3>How people think</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Self-taught in Jungian psychology and attachment theory</li><li>Behavioral psychology: habits, motivation, why people follow through or don't</li><li>It's why Deq exists. I design for how people actually behave, not how they say they do</li></ul></div></details>
+  <details class="stk big rv"><summary><span class="k">Content creation</span><h3>6+ years behind the camera</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Six-plus years of video production and editing</li><li>Shoot on Sony, Canon and Nikon; edit and grade in DaVinci Resolve</li><li>Kanvex, my personal brand: building Deq in public on LinkedIn and X</li><li>Shot and posted Deq's launch video</li></ul></div></details>
+ </div>
+</section>
+
 <section class="w" id="also">
  <p class="k rv">Also</p>
  <div class="rv" style="margin-top:24px">
@@ -346,19 +375,25 @@ deck.addEventListener('click',()=>{deck.prepend(deck.lastElementChild);lay()});
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// Apple-style flowing dropdowns
+// Apple-style flowing dropdowns (animates margin + padding too, so nothing snaps at the end)
 document.querySelectorAll('details.more,details.arow,details.stk').forEach(d=>{
  const sum=d.querySelector('summary'),body=d.querySelector(':scope > p, :scope > .ad');if(!body)return;
- body.style.overflow='hidden';let busy=false;
+ body.style.overflow='hidden';let anim=null;
+ const ease='cubic-bezier(.32,.72,0,1)';
+ const full=()=>{body.style.cssText='overflow:hidden';const cs=getComputedStyle(body);
+  return{height:body.offsetHeight+'px',paddingTop:cs.paddingTop,paddingBottom:cs.paddingBottom,marginTop:cs.marginTop,opacity:1,transform:'none',filter:'blur(0)'}};
+ const zero={height:'0px',paddingTop:'0px',paddingBottom:'0px',marginTop:'0px',opacity:0,transform:'translateY(-6px)',filter:'blur(4px)'};
  sum.addEventListener('click',e=>{
-  e.preventDefault();if(busy)return;busy=true;
-  const ease='cubic-bezier(.32,.72,0,1)';
-  if(!d.open){
-   d.open=true;const h=body.scrollHeight;
-   body.animate([{height:'0px',opacity:0,transform:'translateY(-8px)',filter:'blur(4px)'},{height:h+'px',opacity:1,transform:'none',filter:'blur(0)'}],{duration:520,easing:ease}).onfinish=()=>busy=false;
-  }else{
-   const h=body.scrollHeight;
-   body.animate([{height:h+'px',opacity:1,transform:'none',filter:'blur(0)'},{height:'0px',opacity:0,transform:'translateY(-8px)',filter:'blur(4px)'}],{duration:380,easing:ease}).onfinish=()=>{d.open=false;busy=false};
+  e.preventDefault();
+  const opening=!d.open||d.dataset.closing==='1';
+  // start from wherever it is now (interruptible)
+  let from=null;if(anim){const cs=getComputedStyle(body);from={height:cs.height,paddingTop:cs.paddingTop,paddingBottom:cs.paddingBottom,marginTop:cs.marginTop,opacity:cs.opacity,transform:cs.transform==='none'?'none':cs.transform,filter:cs.filter};anim.cancel();}
+  if(opening){d.dataset.closing='0';d.open=true;const to=full();
+   anim=body.animate([from||zero,to],{duration:480,easing:ease});
+   anim.onfinish=()=>{anim=null};
+  }else{d.dataset.closing='1';const start=from||full();
+   anim=body.animate([start,zero],{duration:340,easing:ease,fill:'forwards'});
+   anim.onfinish=()=>{d.open=false;d.dataset.closing='0';anim.cancel();anim=null};
   }
  });
 });
