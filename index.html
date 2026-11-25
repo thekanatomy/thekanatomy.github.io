@@ -60,7 +60,7 @@ h2 em{font-style:normal;color:var(--mute)}
 .bar{height:8px;border-radius:4px;background:var(--line);margin-bottom:10px;position:relative;overflow:hidden}
 .bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:4px}
 .mic{width:64px;height:64px;border-radius:50%;background:var(--blue);display:grid;place-items:center}
-.mic::after{content:"";width:16px;height:26px;border-radius:9px;border:3px solid #fff}
+.mic svg{width:28px;height:28px}
 details.more{margin-top:18px}
 details.more summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--blue)}
 details.more summary::-webkit-details-marker{display:none}
@@ -95,6 +95,73 @@ footer h2{margin:14px auto 36px}
  section{padding:96px 0}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* ===== SYSTEM: 8pt spacing + type scale (Apple-style) ===== */
+:root{--s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:4rem;--s7:6rem;--s8:8rem;--s9:10rem}
+body{font-size:1.0625rem;line-height:1.47;letter-spacing:-.011em}
+/* the bug: .w padding was overriding section padding */
+section.w{padding:var(--s9) var(--s3) 0}
+#deq{padding-top:var(--s9)}
+footer.w{padding:var(--s9) var(--s3) var(--s6)}
+.stats{margin-top:0}
+/* eyebrow -> heading -> body rhythm */
+.k{font-size:.75rem;letter-spacing:.08em;line-height:1.33;margin:0}
+h2{font-size:clamp(2.5rem,5.5vw,4.5rem);line-height:1.05;letter-spacing:-.035em;margin:var(--s2) 0 0}
+.center h2{margin-left:auto;margin-right:auto}
+.center>details.more{margin-top:var(--s4)}
+.bento,.tl2{margin-top:var(--s6);gap:var(--s2)}
+#also>.rv:not(.k){margin-top:var(--s4)!important}
+/* tiles */
+.tile{padding:var(--s4);border-radius:1.75rem;min-height:16rem}
+.tile .viz{top:var(--s4);left:var(--s4);right:var(--s4)}
+.tile .k{margin-bottom:var(--s1)}
+.tile h3{font-size:1.75rem;line-height:1.14;letter-spacing:-.025em;margin:0}
+.tl2 .tile{min-height:13rem}
+.tl2 .tile h3{font-size:1.375rem;line-height:1.18;letter-spacing:-.02em;margin-top:var(--s1)}
+details.more{margin-top:var(--s2)}
+details.more p{font-size:.9375rem;line-height:1.47;letter-spacing:-.01em;margin-top:var(--s1)}
+/* stats */
+.stats div{padding:var(--s5) var(--s3)}
+.stats b{font-size:3.5rem;letter-spacing:-.04em;line-height:1}
+.stats span{font-size:.875rem;margin-top:var(--s1)}
+/* hero */
+.hero h1{line-height:1;letter-spacing:-.04em}
+.hero p.lead{font-size:1.3125rem;line-height:1.38;letter-spacing:-.015em;margin:var(--s3) 0 var(--s4)}
+.hero .k{margin-bottom:var(--s2)}
+/* also rows */
+.arow summary{padding:var(--s3) 0}
+.arow .ad{line-height:1.47}
+/* footer */
+footer h2{margin:0 auto var(--s5)}
+.fine{margin-top:var(--s7)}
+@media(max-width:860px){
+ section.w{padding:var(--s7) var(--s3) 0}
+ footer.w{padding:var(--s7) var(--s3) var(--s5)}
+ .tile{min-height:auto;padding:var(--s3)}
+ .tile .viz{position:static;margin-bottom:var(--s3)}
+ .stats b{font-size:2.5rem}
+ .stats div{padding:var(--s4) var(--s2)}
+}
+
+/* ===== QA fixes ===== */
+html,body{overflow-x:hidden}
+.stats{max-width:1072px;margin:0 auto;padding:0}
+.stats div:first-child{padding-left:0}
+.tl2 .tile{justify-content:flex-start}
+.tl2 .tile details.more{margin-top:auto;padding-top:var(--s3)}
+.bento .tile:not(:has(.viz)){min-height:12rem}
+@media(max-width:860px){
+ .stage{height:380px;overflow:visible}
+ .deck{width:190px;height:266px;margin-right:60px}
+ .card{padding:16px;border-radius:16px}.card .n{font-size:17px}.card .av{width:40px;height:40px}
+ .stats{margin:0 var(--s3)}
+ .stats div{padding:var(--s4) var(--s2) var(--s4) 0}
+ .stats div:nth-child(even){padding-left:var(--s2)}
+ .tl2 .tile,.bento .tile:not(:has(.viz)){min-height:auto}
+ .hero{gap:0}
+ h2{font-size:2.125rem;letter-spacing:-.03em;line-height:1.1}
+ footer h2{font-size:2.125rem}
+}
 </style>
 </head>
 <body>
@@ -132,14 +199,14 @@ footer h2{margin:14px auto 36px}
  <details class="more rv"><summary>Why I built it</summary><p>The day I left India, a well-connected businessman told me to stay in touch. Months later I couldn't remember his name, his face or his number. Deq exists so that doesn't happen again.</p></details>
  <div class="bento">
   <div class="tile s4 rv"><div class="viz"><div class="bar"><i style="width:90%"></i></div><div class="bar"><i style="width:37%;background:#a78bfa"></i></div></div><p class="k">Discovery</p><h3>90% loved it. 37% tried it.</h3><details class="more"><summary>What I learned</summary><p>I pitched it to 19 founders. Most asked "Is it on the App Store?" before anything else, so iOS became the top priority.</p></details></div>
-  <div class="tile s2 rv"><div class="viz"><div class="mic"></div></div><p class="k">Voice</p><h3>Say a name.</h3><details class="more"><summary>More</summary><p>Matching cards come to the front. Then say what to do: send an email, set a reminder.</p></details></div>
+  <div class="tile s2 rv"><div class="viz"><div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div></div><p class="k">Voice</p><h3>Say a name.</h3><details class="more"><summary>More</summary><p>Matching cards come to the front. Then say what to do: send an email, set a reminder.</p></details></div>
   <div class="tile s2 rv"><p class="k">Capture</p><h3>Scan, don't type.</h3><details class="more"><summary>More</summary><p>A vision model turns a business card into a contact card.</p></details></div>
   <div class="tile s2 rv"><p class="k">Privacy</p><h3>Yours. Local.</h3><details class="more"><summary>More</summary><p>Cards stay on your phone, and backup is optional. Deq never imports your contacts.</p></details></div>
   <div class="tile s2 rv"><p class="k">Sharing</p><h3>In your Wallet.</h3><details class="more"><summary>More</summary><p>Your card lives in Apple Wallet. Someone scans it and you're in their deck.</p></details></div>
  </div>
 </section>
 
-<section class="w center" id="build" style="padding-top:0">
+<section class="w center" id="build">
  <p class="k rv">The build</p>
  <h2 class="rv">Ship. Listen. Cut.</h2>
  <div class="tl2">
@@ -150,7 +217,7 @@ footer h2{margin:14px auto 36px}
  </div>
 </section>
 
-<section class="w" id="also" style="padding-top:0">
+<section class="w" id="also">
  <p class="k rv">Also</p>
  <div class="rv" style="margin-top:24px">
   <details class="arow"><summary><b>ReadyCheck × Honeywell</b><p>Alert fatigue, first responders</p><span class="k">2026</span></summary><div class="ad">A course project with Honeywell on alert fatigue: first responders and aviation crews get so many alerts they stop trusting them. We researched the problem and presented a system to Honeywell in Nov 2026.</div></details>
