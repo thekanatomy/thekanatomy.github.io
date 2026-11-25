@@ -276,6 +276,15 @@ html,body{overflow-x:hidden}
 .hero p.lead a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .brand{font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .5s cubic-bezier(.32,.72,0,1);pointer-events:none}
 .scrolled .brand{opacity:1;transform:none;pointer-events:auto}
+
+/* hero: fit in one screen, optically centered */
+.hero{min-height:100vh;min-height:100svh;padding-top:52px;padding-bottom:var(--s4);align-items:center;box-sizing:border-box}
+.hero h1{font-size:clamp(2.5rem,min(6.2vw,9.5vh),6rem)}
+.myname2{font-size:clamp(1.5rem,min(2.6vw,4.2vh),2.5rem);margin:var(--s1) 0 var(--s2)}
+.hero p.lead{font-size:clamp(1rem,min(1.5vw,2.4vh),1.3125rem);margin:var(--s3) 0}
+.stage{height:min(560px,62vh)}
+.deck{width:min(260px,30vh);height:min(364px,42vh)}
+@media(max-width:860px){.hero{min-height:auto;padding-top:96px}.hero h1{font-size:clamp(2.25rem,10vw,3.25rem)}.stage{height:380px}.deck{width:190px;height:266px}}
 </style>
 </head>
 <body>
