@@ -197,6 +197,13 @@ html,body{overflow-x:hidden}
 :root.light .stk img.lg{filter:none}
 .stk .gen{color:var(--ink)}
 @media(max-width:860px){.stk .lgw{top:var(--s3);left:var(--s3)}.stk summary{min-height:9.5rem}}
+
+/* stack: no forehead */
+.stk summary{min-height:0!important;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:var(--s2);align-items:center}
+.stk summary .k{grid-column:1;grid-row:1}
+.stk summary h3{grid-column:1;grid-row:2}
+.stk .pl{position:static;grid-column:2;grid-row:1/3}
+.stk h3{font-size:1.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
@@ -259,7 +266,7 @@ html,body{overflow-x:hidden}
  <div class="stkgrid">
   <details class="stk rv"><summary><span class="k">Analysis & ML</span><h3>Python</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Data analysis in both analyst internships (Systech, AVS Livescape)</li><li>Analyzed the childcare dataset for my published paper</li><li>Daily use across my MS Data Science at ASU</li></ul></div></details>
   <details class="stk rv"><summary><span class="k">Querying & reporting</span><h3>SQL</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Used at work in my Systech data analyst internship</li><li>Used at AVS Livescape for analysis</li></ul></div></details>
-  <details class="stk rv"><summary><span class="k">Front end</span><h3>React + JavaScript</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Learned JS and CSS from zero in Oct 2026 by building Deq</li><li>Deq's card deck, scanner and Wallet-style stack</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Front end</span><h3>React · JS</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Learned JS and CSS from zero in Oct 2026 by building Deq</li><li>Deq's card deck, scanner and Wallet-style stack</li></ul></div></details>
   <details class="stk rv"><summary><span class="k">Local-first data</span><h3>IndexedDB · Dexie</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Deq stores every card on the phone, offline-first</li><li>Syncs to the cloud only when the user opts in</li></ul></div></details>
   <details class="stk rv"><summary><span class="k">Auth & backup</span><h3>Supabase</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Deq accounts and cloud backup</li><li>Email-code sign-in, prompted after the 5th card</li></ul></div></details>
   <details class="stk rv"><summary><span class="k">Vision & agents</span><h3>Gemini API</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Deq turns a business-card photo into a structured card</li><li>pulse (SunHacks 2026): an agent that suggests who to reach out to and why</li></ul></div></details>
