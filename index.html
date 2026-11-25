@@ -175,12 +175,34 @@ html,body{overflow-x:hidden}
 .bar:nth-child(2) i{background:var(--mute)!important}
 .hero{position:relative}
 #dust{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+/* stack */
+.stkgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s6);text-align:left;align-items:start}
+.stk{background:var(--tile);border:1px solid var(--line);border-radius:1.75rem;transition:border-color .3s}
+.stk:hover,.stk[open]{border-color:var(--bd)}
+.stk summary{list-style:none;cursor:pointer;min-height:12rem;padding:var(--s4);display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.stk summary::-webkit-details-marker{display:none}
+.stk h3{font-size:1.75rem;line-height:1.14;letter-spacing:-.025em;font-weight:600;margin-top:var(--s1)}
+.stk .pl{position:absolute;top:var(--s4);right:var(--s4);width:28px;height:28px;border-radius:50%;border:1px solid var(--bd);display:grid;place-items:center;font-size:16px;transition:transform .3s}
+.stk[open] .pl{transform:rotate(45deg)}
+.stk .ad{padding:0 var(--s4) var(--s4)}
+.stk ul{list-style:none;border-top:1px solid var(--line);padding-top:var(--s2)}
+.stk li{color:var(--mute);font-size:.9375rem;line-height:1.47;padding:6px 0 6px 18px;position:relative}
+.stk li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%;background:var(--mute)}
+@media(max-width:860px){.stkgrid{grid-template-columns:1fr}.stk summary{min-height:8rem;padding:var(--s3)}.stk .pl{top:var(--s3);right:var(--s3)}.stk .ad{padding:0 var(--s3) var(--s3)}}
+
+.stk .lgw{position:absolute;top:var(--s4);left:var(--s4);width:40px;height:40px;display:grid;place-items:center}
+.stk .lg{width:32px;height:32px;opacity:.9}
+.stk img.lg{filter:invert(1)}
+:root.light .stk img.lg{filter:none}
+.stk .gen{color:var(--ink)}
+@media(max-width:860px){.stk .lgw{top:var(--s3);left:var(--s3)}.stk summary{min-height:9.5rem}}
 </style>
 </head>
 <body>
 
 <canvas id="dust" aria-hidden="true"></canvas>
-<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
+<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#stack">Stack</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
 
 <header class="w hero">
  <div>
@@ -231,6 +253,22 @@ html,body{overflow-x:hidden}
  </div>
 </section>
 
+<section class="w center" id="stack">
+ <p class="k rv">The stack</p>
+ <h2 class="rv">What I build with.</h2>
+ <div class="stkgrid">
+  <details class="stk rv"><summary><span class="k">Analysis & ML</span><h3>Python</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Data analysis in both analyst internships (Systech, AVS Livescape)</li><li>Analyzed the childcare dataset for my published paper</li><li>Daily use across my MS Data Science at ASU</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Querying & reporting</span><h3>SQL</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Used at work in my Systech data analyst internship</li><li>Used at AVS Livescape for analysis</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Front end</span><h3>React + JavaScript</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Learned JS and CSS from zero in Oct 2026 by building Deq</li><li>Deq's card deck, scanner and Wallet-style stack</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Local-first data</span><h3>IndexedDB · Dexie</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Deq stores every card on the phone, offline-first</li><li>Syncs to the cloud only when the user opts in</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Auth & backup</span><h3>Supabase</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Deq accounts and cloud backup</li><li>Email-code sign-in, prompted after the 5th card</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Vision & agents</span><h3>Gemini API</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Deq turns a business-card photo into a structured card</li><li>pulse (SunHacks 2026): an agent that suggests who to reach out to and why</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Data visualization</span><h3>D3.js</h3><span class="pl">+</span></summary><div class="ad"><ul><li>CSE 578, Data Visualization at ASU</li><li>Interactive charts for course assignments</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">Models & media</span><h3>Machine learning</h3><span class="pl">+</span></summary><div class="ad"><ul><li>AME 434, ML for Media Arts at ASU</li><li>VisionBrush, a three-person team project</li></ul></div></details>
+  <details class="stk rv"><summary><span class="k">iOS</span><h3>Swift · SwiftUI</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Prototyped rowdon, an iOS focus app using HealthKit</li><li>Groundwork for Deq's App Store version</li></ul></div></details>
+ </div>
+</section>
+
 <section class="w" id="also">
  <p class="k rv">Also</p>
  <div class="rv" style="margin-top:24px">
@@ -271,7 +309,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.c
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 // Apple-style flowing dropdowns
-document.querySelectorAll('details.more,details.arow').forEach(d=>{
+document.querySelectorAll('details.more,details.arow,details.stk').forEach(d=>{
  const sum=d.querySelector('summary'),body=d.querySelector(':scope > p, :scope > .ad');if(!body)return;
  body.style.overflow='hidden';let busy=false;
  sum.addEventListener('click',e=>{
