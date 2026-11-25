@@ -288,6 +288,14 @@ html,body{overflow-x:hidden}
 
 .avail{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 var(--s3)}
 .avail li{font-size:.875rem;font-weight:500;color:var(--ink);border:1px solid var(--bd);background:var(--sec,rgba(127,127,127,.08));border-radius:999px;padding:6px 14px}
+
+.shots{display:flex;justify-content:center;gap:var(--s3);margin-top:var(--s6);flex-wrap:wrap}
+.shots:empty{display:none}
+.shots figure{width:min(260px,70vw);border-radius:2.25rem;overflow:hidden;border:1px solid var(--line);background:var(--tile);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.shots img{display:block;width:100%;height:auto}
+.shots figure:nth-child(2){transform:translateY(-24px)}
+@media(max-width:860px){.shots{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;padding-bottom:var(--s2)}.shots figure{flex:0 0 70vw;scroll-snap-align:center}.shots figure:nth-child(2){transform:none}}
+.alt{color:var(--mute);font-size:.9375rem;margin-top:var(--s2)}.alt a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -335,11 +343,17 @@ html,body{overflow-x:hidden}
  </div>
  <details class="more rv"><summary>Why I built it</summary><p>The day I left India, a well-connected businessman told me to stay in touch. Months later I couldn't remember his name, his face or his number. Deq exists so that doesn't happen again.</p></details>
  <div class="bento">
-  <div class="tile s4 rv"><div class="viz"><div class="bar"><i style="width:90%"></i></div><div class="bar"><i style="width:37%;background:#a78bfa"></i></div></div><p class="k">Discovery</p><h3>90% loved it. 37% tried it.</h3><details class="more"><summary>What I learned</summary><p>I pitched it to 19 founders. Most asked "Is it on the App Store?" before anything else, so iOS became the top priority.</p></details></div>
+  <div class="tile s4 rv"><div class="viz"><div class="bar"><i style="width:90%"></i></div><div class="bar"><i style="width:37%;background:#a78bfa"></i></div></div><p class="k">Discovery</p><h3>19 founders pitched · 7 tried it.</h3><details class="more"><summary>What I learned</summary><p>I pitched it to 19 founders. Most asked "Is it on the App Store?" before anything else, so iOS became the top priority.</p></details></div>
   <div class="tile s2 rv"><div class="viz"><div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div></div><p class="k">Voice</p><h3>Say a name.</h3><details class="more"><summary>More</summary><p>Matching cards come to the front. Then say what to do: send an email, set a reminder.</p></details></div>
   <div class="tile s2 rv"><p class="k">Capture</p><h3>Scan, don't type.</h3><details class="more"><summary>More</summary><p>A vision model turns a business card into a contact card.</p></details></div>
   <div class="tile s2 rv"><p class="k">Privacy</p><h3>Yours. Local.</h3><details class="more"><summary>More</summary><p>Cards stay on your phone, and backup is optional. Deq never imports your contacts.</p></details></div>
   <div class="tile s2 rv"><p class="k">Sharing</p><h3>In your Wallet.</h3><details class="more"><summary>More</summary><p>Your card lives in Apple Wallet. Someone scans it and you're in their deck.</p></details></div>
+ </div>
+
+ <div class="shots rv" id="shots">
+  <figure><img src="deq-1.png" alt="Deq home deck" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+  <figure><img src="deq-2.png" alt="Deq card scanner" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+  <figure><img src="deq-3.png" alt="A saved Deq card" loading="lazy" onerror="this.closest('figure').remove()"></figure>
  </div>
 </section>
 
@@ -415,7 +429,7 @@ html,body{overflow-x:hidden}
  <div class="rv" style="margin-top:24px">
   <details class="arow"><summary><b>ReadyCheck × Honeywell</b><p>Alert fatigue, first responders</p><span class="k">2026</span></summary><div class="ad">A course project with Honeywell on alert fatigue: first responders and aviation crews get so many alerts they stop trusting them. We researched the problem and presented a system to Honeywell in Nov 2026.</div></details>
   <details class="arow"><summary><b>Psych for Life</b><p>Product Content Strategist</p><span class="k">2026</span></summary><div class="ad">ASU Psychology Department. I analyzed competitors' features and recommended product and marketing changes.</div></details>
-  <details class="arow"><summary><b>Systech · AVS Livescape</b><p>Data analyst intern</p><span class="k">2024–25</span></summary><div class="ad">Two analyst internships in Chennai, working in SQL and Python. TODO: one result with a number.</div></details>
+  <details class="arow"><summary><b>Systech · AVS Livescape</b><p>Data analyst intern</p><span class="k">2024–25</span></summary><div class="ad">Two analyst internships in Chennai, working in SQL and Python.</div></details>
   <details class="arow"><summary><b>AIP Conf. Proc.</b><p>Co-author, published research</p><span class="k">2025</span></summary><div class="ad">&ldquo;Blockchain enhanced children healthcare.&rdquo; I did the data analysis on the childcare data. Presented at ICIRIAC 2024.</div></details>
  </div>
 </section>
@@ -423,10 +437,11 @@ html,body{overflow-x:hidden}
 <footer class="w" id="contact">
  <h2 class="rv">Meet me once.<br><em>I'll be in your deck.</em></h2>
  <div class="ctas rv">
-  <a class="b p" href="mailto:YOUR_EMAIL@asu.edu">Email</a>
+  <a class="b p" href="mailto:founder@deq.one,kanigoudam6@gmail.com?subject=Hi%20Kanish">Email me</a>
   <a class="b s" href="https://linkedin.com/in/kanish-goudam" target="_blank" rel="noopener">LinkedIn</a>
   <a class="b s" href="https://github.com/thekanatomy" target="_blank" rel="noopener">GitHub</a>
  </div>
+ <p class="alt rv">founder@deq.one · kanigoudam6@gmail.com</p>
  <p class="k fine">© 2026 Kanish Goudam</p>
 </footer>
 
