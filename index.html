@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kanish Goudam — Building Deq</title>
+<title>Kanish Goudam — Portfolio</title>
 <meta name="description" content="Kanish Goudam. Founder of Deq, MS Data Science at ASU.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
@@ -232,19 +232,66 @@ html,body{overflow-x:hidden}
 .steps h4{font-size:1.375rem;font-weight:600;letter-spacing:-.02em;margin:var(--s1) 0 4px}
 .steps p{color:var(--mute);font-size:.9375rem;line-height:1.47}
 @media(max-width:860px){.psub{font-size:1.0625rem}.steps{grid-template-columns:1fr}.steps div+div{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:var(--s3)}.steps div{padding:var(--s2) 0 0}}
+
+.stkgrid.five{grid-template-columns:repeat(5,1fr);position:relative}
+.stk.flow h3{font-size:1.25rem}
+.stk.flow summary{padding:var(--s3)}
+.stk.flow .ad{padding:0 var(--s3) var(--s3)}
+.stk.flow li{font-size:.875rem}
+@media(max-width:1100px){.stkgrid.five{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.stkgrid.five{grid-template-columns:1fr}}
+
+/* mobile menu (Apple-style) */
+.burg{display:none;width:36px;height:36px;border:0;background:none;cursor:pointer;position:relative;margin-right:-8px}
+.burg span{position:absolute;left:9px;width:18px;height:1.5px;background:var(--ink);border-radius:1px;transition:transform .35s cubic-bezier(.32,.72,0,1)}
+.burg span:first-child{top:14px}.burg span:last-child{top:21px}
+.menu-open .burg span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-open .burg span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mmenu{position:fixed;inset:52px 0 0;z-index:19;background:var(--nav);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);visibility:hidden;opacity:0;transition:opacity .3s ease,visibility 0s .3s}
+:root .mmenu{background:rgba(0,0,0,.86)}:root.light .mmenu{background:rgba(251,251,253,.9)}
+.mmenu ul{list-style:none;padding:var(--s3)}
+.mmenu li{opacity:0;transform:translateY(-8px);transition:opacity .35s,transform .45s cubic-bezier(.32,.72,0,1)}
+.mmenu a{display:block;font-size:1.75rem;font-weight:600;letter-spacing:-.02em;padding:10px 0;color:var(--ink)}
+.menu-open .mmenu{visibility:visible;opacity:1;transition:opacity .3s ease}
+.menu-open .mmenu li{opacity:1;transform:none}
+.menu-open{overflow:hidden}
+@media(max-width:860px){.burg{display:block}nav .l{display:none}nav{z-index:21}}
+
+/* rotating word, Apple-style blur swap */
+.rot{display:inline-grid;font-weight:inherit;vertical-align:bottom}
+.rot i{grid-area:1/1;font-style:normal;color:var(--ink);opacity:0;filter:blur(12px);transform:translateY(.25em);transition:opacity .7s cubic-bezier(.32,.72,0,1),filter .7s cubic-bezier(.32,.72,0,1),transform .7s cubic-bezier(.32,.72,0,1)}
+.rot i.on{opacity:1;filter:blur(0);transform:none}
+.rot i.out{opacity:0;filter:blur(12px);transform:translateY(-.25em)}
+@media(prefers-reduced-motion:reduce){.rot i{transition:opacity .3s;filter:none;transform:none}}
+
+/* name-first hero */
+.myname{font-size:clamp(3.25rem,7.5vw,6.5rem);line-height:.95;letter-spacing:-.045em;font-weight:700;margin-top:var(--s2)}
+.role{font-size:1.25rem;line-height:1.4;letter-spacing:-.015em;color:var(--mute);margin-top:var(--s3);max-width:32rem}
+.role a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.tagline{font-size:clamp(1.5rem,2.4vw,2.125rem);line-height:1.15;letter-spacing:-.025em;font-weight:600;margin:var(--s4) 0 var(--s4)}
+.tagline span{color:var(--mute)}
+@media(max-width:860px){.role{font-size:1.0625rem}}
+
+.myname2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin:var(--s2) 0 var(--s3)}
+.hero p.lead a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.brand{font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .5s cubic-bezier(.32,.72,0,1);pointer-events:none}
+.scrolled .brand{opacity:1;transform:none;pointer-events:auto}
 </style>
 </head>
 <body>
 
 <canvas id="dust" aria-hidden="true"></canvas>
-<nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#visionbrush">VisionBrush</a><a href="#stack">Stack</a><a href="#beyond">Beyond</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
+<nav><div class="w"><a href="#top" class="brand" id="brand">Kanish Goudam</a><div class="l"><a href="#deq">Deq</a><a href="#visionbrush">VisionBrush</a><a href="#stack">Stack</a><a href="#how">How I work</a><a href="#beyond">Beyond</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div><button class="burg" id="burg" aria-label="Menu" aria-expanded="false"><span></span><span></span></button></div></nav>
+<div class="mmenu" id="mmenu" aria-hidden="true"><ul><li><a href="#deq">Deq</a></li><li><a href="#visionbrush">VisionBrush</a></li><li><a href="#stack">Stack</a></li><li><a href="#how">How I work</a></li><li><a href="#beyond">Beyond</a></li><li><a href="#also">Also</a></li><li><a href="#contact">Contact</a></li></ul></div>
 
-<header class="w hero">
+
+<header class="w hero" id="top">
  <div>
-  <p class="k">Founder, Deq · Data Science, ASU</p>
-  <h1>People you <span>shouldn't forget.</span></h1>
-  <p class="lead">I'm Kanish. I build Deq.</p>
-  <div class="btns"><a class="btn p" href="https://deq.one" target="_blank" rel="noopener">Try Deq ↗</a><a class="btn" href="#deq">See the work</a></div>
+  <p class="k">Portfolio · 2026</p>
+  <p class="myname2">Kanish Goudam</p>
+  <h1>The people you forget <span>cost you</span> <b class="rot" aria-live="polite"><i class="on">time.</i><i>money.</i><i>deals.</i><i>status.</i></b></h1>
+  <p class="lead">Data scientist &amp; product builder. Founder of <a href="https://deq.one" target="_blank" rel="noopener">Deq</a>. MS Data Science, ASU &rsquo;27.</p>
+  <div class="btns"><a class="btn p" href="#deq">See my work</a><a class="btn" href="resume.pdf" target="_blank">Résumé</a><a class="btn" href="https://deq.one" target="_blank" rel="noopener">Try Deq ↗</a></div>
  </div>
  <div class="stage" aria-hidden="true">
   <div class="glow"></div>
@@ -337,6 +384,19 @@ html,body{overflow-x:hidden}
  </div>
 </section>
 
+<section class="w center" id="how">
+ <p class="k rv">How I work</p>
+ <h2 class="rv">I start with the user.<br><em>Every skill I have followed.</em></h2>
+ <p class="psub rv">I didn't learn tools and then look for problems. I found a problem, mapped how people actually move through it, and learned whatever the flow needed.</p>
+ <div class="stkgrid five">
+  <details class="stk flow rv"><summary><span class="k">01</span><h3>Observe</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Lost touch with someone who could have changed my path</li><li>Watched people at career fairs meet many and follow up with few</li><li>Interviewed 15 classmates and pitched 19 founders</li></ul></div></details>
+  <details class="stk flow rv"><summary><span class="k">02</span><h3>Define</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Narrowed Deq to one moment: events and career fairs</li><li>Set one bar: saving a person must take about 5 seconds</li></ul></div></details>
+  <details class="stk flow rv"><summary><span class="k">03</span><h3>Design</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Designed the card myself, with playing-card proportions</li><li>Wallet-style stack so it feels familiar on day one</li><li>Sign-in waits until the 5th card, so people try it first</li></ul></div></details>
+  <details class="stk flow rv"><summary><span class="k">04</span><h3>Build</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Learned React, JS and CSS because Deq needed them</li><li>Local-first storage so it works offline, instantly</li></ul></div></details>
+  <details class="stk flow rv"><summary><span class="k">05</span><h3>Test & cut</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Cut the suit system I loved after feedback</li><li>Founders asked for the App Store first, so iOS moved up</li></ul></div></details>
+ </div>
+</section>
+
 <section class="w" id="also">
  <p class="k rv">Also</p>
  <div class="rv" style="margin-top:24px">
@@ -413,6 +473,25 @@ const px=d.x-mx*40*d.z*dpr,py=((d.y-sc*d.z*.15)%H+H)%H-my*30*d.z*dpr;
 const tw=.65+.35*Math.sin(t*d.s+d.p);
 x.fillStyle=`rgba(${col},${d.a*tw})`;x.beginPath();x.arc(px,py,d.r,0,6.283);x.fill()}
 requestAnimationFrame(f)}requestAnimationFrame(f)})();
+
+// mobile menu
+(()=>{const b=document.getElementById('burg'),m=document.getElementById('mmenu'),r=document.documentElement;
+const set=o=>{r.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);m.setAttribute('aria-hidden',!o);
+ m.querySelectorAll('li').forEach((li,i)=>li.style.transitionDelay=o?(60+i*35)+'ms':'0ms')};
+b.addEventListener('click',()=>set(!r.classList.contains('menu-open')));
+m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+addEventListener('resize',()=>{if(innerWidth>860)set(false)});})();
+
+// hero word rotation
+(()=>{const w=[...document.querySelectorAll('.rot i')];if(w.length<2)return;let k=0;
+setInterval(()=>{if(document.hidden)return;const a=w[k];k=(k+1)%w.length;const b=w[k];
+ a.classList.remove('on');a.classList.add('out');b.classList.remove('out');b.classList.add('on');
+ setTimeout(()=>a.classList.remove('out'),700)},2000);})();
+
+// show name in header once the hero name scrolls away
+(()=>{const n=document.querySelector('.myname2');if(!n)return;
+new IntersectionObserver(([e])=>document.documentElement.classList.toggle('scrolled',!e.isIntersecting),{rootMargin:'-52px 0px 0px 0px'}).observe(n)})();
 </script>
 </body>
 </html>
