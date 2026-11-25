@@ -162,10 +162,24 @@ html,body{overflow-x:hidden}
  h2{font-size:2.125rem;letter-spacing:-.03em;line-height:1.1}
  footer h2{font-size:2.125rem}
 }
+
+/* ===== neutral palette + particles ===== */
+.hero h1 span{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--mute)}
+.glow{display:none}
+.c1{background:linear-gradient(160deg,#fff 35%,#e8e8ed)}
+.c2{background:linear-gradient(160deg,#fafafa 35%,#dcdce1)}
+.c3{background:linear-gradient(160deg,#f5f5f7 35%,#d2d2d7)}
+.c4{background:linear-gradient(160deg,#f2f2f4 35%,#c7c7cc)}
+.card .av{background:#d2d2d7}
+.bar i{background:var(--ink)!important}
+.bar:nth-child(2) i{background:var(--mute)!important}
+.hero{position:relative}
+#dust{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 </style>
 </head>
 <body>
 
+<canvas id="dust" aria-hidden="true"></canvas>
 <nav><div class="w"><b>Kanish Goudam</b><div class="l"><a href="#deq">Deq</a><a href="#also">Also</a><a href="#contact" class="blue">Contact</a></div></div></nav>
 
 <header class="w hero">
@@ -272,6 +286,22 @@ document.querySelectorAll('details.more,details.arow').forEach(d=>{
   }
  });
 });
+
+// dust field v2: 3 depth layers, soft twinkle, gentle cursor + scroll parallax
+(()=>{const c=document.getElementById('dust');if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const x=c.getContext('2d');let W,H,D=[],dpr=Math.min(devicePixelRatio||1,2),run=true,mx=0,my=0,tx=0,ty=0,t=0;
+const size=()=>{W=c.width=innerWidth*dpr;H=c.height=innerHeight*dpr;const n=Math.min(130,Math.round(innerWidth*innerHeight/12000));
+D=Array.from({length:n},()=>{const z=Math.random();return{x:Math.random()*W,y:Math.random()*H,z,r:(.5+z*1.4)*dpr,v:(.04+z*.22)*dpr,a:.12+z*.45,p:Math.random()*6.28,s:.4+Math.random()*.8}})};
+size();addEventListener('resize',size);
+addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5);ty=(e.clientY/innerHeight-.5)},{passive:true});
+document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)requestAnimationFrame(f)});
+function f(){if(!run)return;t+=.016;mx+=(tx-mx)*.04;my+=(ty-my)*.04;
+x.clearRect(0,0,W,H);const col=document.documentElement.classList.contains('light')?'0,0,0':'255,255,255';const sc=scrollY*dpr;
+for(const d of D){d.y-=d.v;d.x+=Math.sin(t*.3+d.p)*.05*dpr;if(d.y<-10)d.y=H+10;
+const px=d.x-mx*40*d.z*dpr,py=((d.y-sc*d.z*.15)%H+H)%H-my*30*d.z*dpr;
+const tw=.65+.35*Math.sin(t*d.s+d.p);
+x.fillStyle=`rgba(${col},${d.a*tw})`;x.beginPath();x.arc(px,py,d.r,0,6.283);x.fill()}
+requestAnimationFrame(f)}requestAnimationFrame(f)})();
 </script>
 </body>
 </html>
