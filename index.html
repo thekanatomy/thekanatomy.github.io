@@ -359,22 +359,56 @@ section.w+section.w{margin-top:0}
 .hw b{color:#ff6b1a;font-weight:700}
 :root.light .hw b{color:#e8560a}
 #readycheck .steps .n{color:#ff6b1a;font-size:.875rem;font-weight:600}
+
+section[data-n]::after{content:attr(data-n);position:absolute;top:var(--s5);left:max(var(--s3),calc(50% - 50vw + var(--s4)));font-size:clamp(4rem,9vw,8.5rem);font-weight:700;letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.28);pointer-events:none;z-index:-1}
+:root.light section[data-n]::after{-webkit-text-stroke-color:rgba(0,0,0,.22)}
+@media(max-width:860px){section[data-n]::after{top:var(--s3);left:var(--s3);font-size:4.5rem;-webkit-text-stroke-width:1px}section[data-n]{padding-top:calc(var(--s7) + 3rem)!important}}
+
+.avail .dup{display:none}
+@media(max-width:860px){
+ .availw{overflow:hidden;margin:0 calc(-1*var(--s3)) var(--s3);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+ .avail{flex-wrap:nowrap;width:max-content;margin:0;padding-left:var(--s3);animation:availm 16s linear infinite}
+ .avail li{white-space:nowrap}
+ .avail .dup{display:block}
+ @keyframes availm{to{transform:translateX(calc(-50% - 4px))}}
+}
+@media(max-width:860px) and (prefers-reduced-motion:reduce){.avail{animation:none;flex-wrap:wrap;width:auto}.avail .dup{display:none}}
+.hero>div{min-width:0}
+@media(max-width:860px){.hero{grid-template-columns:minmax(0,1fr)!important}.availw{max-width:100vw}.btns{flex-wrap:wrap}}
+@media(max-width:860px){.deck{left:-36px}.stage{height:340px!important}}
+
+.mmenu .gh{display:flex;align-items:center;justify-content:space-between}
+.chev{width:44px;height:44px;border:0;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer;margin-right:-10px}
+.chev svg{width:22px;height:22px;transition:transform .4s cubic-bezier(.32,.72,0,1)}
+.grp.open .chev svg{transform:rotate(180deg)}
+.mmenu .sub{list-style:none;padding:0 0 0 var(--s3);border-left:1px solid var(--bd);margin-left:4px;display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s cubic-bezier(.32,.72,0,1)}
+.mmenu .sub>li{min-height:0;overflow:hidden;opacity:1;transform:none}
+.grp.open .sub{grid-template-rows:1fr}
+.mmenu .sub{display:block;max-height:0;transition:max-height .45s cubic-bezier(.32,.72,0,1)}
+.grp.open .sub{max-height:240px}
+.mmenu .sub a{font-size:1.25rem;font-weight:500;color:var(--mute);padding:8px 0}
+.mmenu .sub a:hover{color:var(--ink)}
+button:focus{outline:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:8px}
 </style>
 </head>
 <body>
 
 <canvas id="dust" aria-hidden="true"></canvas>
 <nav><div class="w"><a href="#top" class="brand" id="brand">Kanish Goudam</a><div class="l"><a href="#projects">Projects</a><a href="#deq">Deq</a><a href="#stack">Skills</a><a href="#also">Experience</a><a href="#contact" class="blue">Contact</a></div><button class="burg" id="burg" aria-label="Menu" aria-expanded="false"><span></span><span></span></button></div></nav>
-<div class="mmenu" id="mmenu" aria-hidden="true"><ul><li><a href="#projects">Projects</a></li><li><a href="#deq">Deq</a></li><li><a href="#visionbrush">VisionBrush</a></li><li><a href="#readycheck">ReadyCheck</a></li><li><a href="#how">How I work</a></li><li><a href="#stack">Skills</a></li><li><a href="#beyond">Beyond code</a></li><li><a href="#also">Experience</a></li><li><a href="#contact">Contact</a></li></ul></div>
+<div class="mmenu" id="mmenu" aria-hidden="true"><ul>
+<li class="grp"><div class="gh"><a href="#projects">Projects</a><button class="chev" aria-expanded="false" aria-label="Show projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
+<ul class="sub"><li><a href="#deq">Deq</a></li><li><a href="#visionbrush">VisionBrush</a></li><li><a href="#readycheck">ReadyCheck</a></li></ul></li>
+<li><a href="#how">How I work</a></li><li><a href="#stack">Skills</a></li><li><a href="#beyond">Beyond code</a></li><li><a href="#also">Experience</a></li><li><a href="#contact">Contact</a></li></ul></div>
 
 
 <header class="w hero" id="top">
  <div>
   <a class="now" href="#deq"><span class="tag">Flagship</span>Deq is live: 10 users, 19 founders pitched <span class="ar">→</span></a>
   <p class="myname2">Kanish Goudam</p>
-  <h1>I build apps <span>people actually</span> <em class="ac">use.</em></h1>
+  <h1>I build products <span>people actually</span> <em class="ac">use.</em></h1>
   <p class="lead">Data scientist &amp; product builder. Founder of <a href="https://deq.one" target="_blank" rel="noopener">Deq</a>. MS Data Science, ASU &rsquo;27.</p>
-  <ul class="avail"><li>Graduating May 2027</li><li>Open to relocate</li><li>Internships &amp; full-time</li></ul>
+  <div class="availw"><ul class="avail"><li>Graduating May 2027</li><li>Open to relocate</li><li>Internships &amp; full-time</li><li class="dup" aria-hidden="true">Graduating May 2027</li><li class="dup" aria-hidden="true">Open to relocate</li><li class="dup" aria-hidden="true">Internships &amp; full-time</li></ul></div>
   <div class="btns"><a class="btn p" href="#projects">See my work</a><a class="btn" href="resume.pdf" target="_blank">Résumé</a><a class="btn" href="https://deq.one" target="_blank" rel="noopener">Try Deq ↗</a></div>
  </div>
  <div class="stage" aria-hidden="true">
@@ -414,7 +448,7 @@ section.w+section.w{margin-top:0}
 </section>
 
 
-<section class="w center" id="deq">
+<section class="w center" id="deq" data-n="01">
  <p class="k rv">01 · Flagship project — Deq</p>
  <h2 class="rv">The people you <span class="ac">forget</span> <em>cost you</em> <b class="rot" aria-live="polite"><i class="on">time.</i><i>money.</i><i>deals.</i><i>status.</i></b></h2>
  <p class="psub rv">Founders, recruiters and business people meet people constantly, then forget who they were, what was said, and to follow up. Deq fixes that.</p>
@@ -450,7 +484,7 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
-<section class="w center" id="visionbrush">
+<section class="w center" id="visionbrush" data-n="02">
  <p class="k rv">02 · Project — VisionBrush</p>
  <h2 class="rv">VisionBrush.<br><em>Draw with your <span class="ac">eyes.</span></em></h2>
  <div class="vb rv">
@@ -468,7 +502,7 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
-<section class="w center" id="readycheck">
+<section class="w center" id="readycheck" data-n="03">
  <p class="k rv">03 · Industry project — ReadyCheck</p>
  <p class="hw rv">with <b>Honeywell Aerospace</b></p>
  <h2 class="rv">Fewer alerts.<br><em>Faster decisions.</em></h2>
@@ -480,7 +514,7 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
-<section class="w center" id="how">
+<section class="w center" id="how" data-n="04">
  <p class="k rv">04 · How I work</p>
  <h2 class="rv">I start with <span class="ac">the user.</span><br><em>Every skill I have followed.</em></h2>
  <p class="psub rv">I didn't learn tools and then look for problems. I found a problem, mapped how people actually move through it, and learned whatever the flow needed.</p>
@@ -493,7 +527,7 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
-<section class="w center" id="stack">
+<section class="w center" id="stack" data-n="05">
  <p class="k rv">05 · My skills</p>
  <h2 class="rv">What I build with.</h2>
  <div class="stkgrid">
@@ -509,7 +543,7 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
-<section class="w center" id="beyond">
+<section class="w center" id="beyond" data-n="06">
  <p class="k rv">06 · Beyond code</p>
  <h2 class="rv">I study people.<br><em>Then I tell stories about it.</em></h2>
  <div class="stkgrid two">
@@ -518,7 +552,7 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
-<section class="w" id="also">
+<section class="w" id="also" data-n="07">
  <p class="k rv">07 · Experience</p>
  <h2 class="rv">Where I&rsquo;ve worked.</h2>
  <div class="rv" style="margin-top:24px">
@@ -620,6 +654,8 @@ pp.onclick=()=>{run=!run;pp.innerHTML=run?pause:play;pp.setAttribute('aria-label
 if(!run){pp.innerHTML=play}
 let st;t.addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(()=>{const c=t.scrollLeft+t.clientWidth/2;let best=0,bd=1e9;sl.forEach((s2,i)=>{const d=Math.abs(s2.offsetLeft-t.offsetLeft+s2.clientWidth/2-c);if(d<bd){bd=d;best=i}});if(best!==k){k=best;mark();t0=performance.now()}},120)},{passive:true});
 mark();(function f(now){if(run&&!document.hidden){const p=Math.min(1,(now-t0)/D);bs[k].style.setProperty('--p',p);if(p>=1)go(k+1)}else t0=now-(parseFloat(bs[k].style.getPropertyValue('--p'))||0)*D;requestAnimationFrame(f)})(performance.now());})();
+
+document.querySelectorAll('.mmenu .chev').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const g=b.closest('.grp');const o=g.classList.toggle('open');b.setAttribute('aria-expanded',o)}));
 </script>
 </body>
 </html>
