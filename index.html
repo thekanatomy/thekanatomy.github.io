@@ -293,6 +293,15 @@ html,body{overflow-x:hidden}
 .bar:first-child i{background:var(--mute)!important}.bar:nth-child(2) i{background:var(--ac)!important}
 
 
+
+:root{--band:rgba(22,22,24,.82);--gap:#000}
+:root.light{--band:rgba(245,245,247,.9);--gap:#fff}
+section.w{position:relative;padding-bottom:var(--s9)!important;isolation:isolate}
+section.w::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;border-top:12px solid var(--gap)}
+#deq::before,#visionbrush::before,#beyond::before,#also::before{background:var(--band)}
+section.w+section.w{margin-top:0}
+.stats+section.w,.stats{margin-bottom:0}
+@media(max-width:860px){section.w{padding-bottom:var(--s7)!important}section.w::before{border-top-width:8px}}
 </style>
 </head>
 <body>
