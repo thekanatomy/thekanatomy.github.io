@@ -298,7 +298,7 @@ html,body{overflow-x:hidden}
 :root.light{--band:rgba(245,245,247,.9);--gap:#fff}
 section.w{position:relative;padding-bottom:var(--s9)!important;isolation:isolate}
 section.w::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;border-top:12px solid var(--gap)}
-#deq::before,#visionbrush::before,#stack::before,#also::before{background:var(--band)}
+#deq::before,#visionbrush::before,#how::before,#beyond::before{background:var(--band)}
 section.w+section.w{margin-top:0}
 .stats+section.w,.stats{margin-bottom:0}
 @media(max-width:860px){section.w{padding-bottom:var(--s7)!important}section.w::before{border-top-width:8px}}
@@ -354,13 +354,18 @@ section.w+section.w{margin-top:0}
 .now .tag{background:var(--ac);color:#fff;border-radius:999px;padding:3px 10px;font-weight:600;font-size:.75rem;letter-spacing:.02em}
 .now .ar{color:var(--ac)}
 @media(max-width:860px){.now{font-size:.8125rem}}
+
+.hw{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:500;letter-spacing:-.02em;margin-top:var(--s2);color:var(--mute)}
+.hw b{color:#ff6b1a;font-weight:700}
+:root.light .hw b{color:#e8560a}
+#readycheck .steps .n{color:#ff6b1a;font-size:.875rem;font-weight:600}
 </style>
 </head>
 <body>
 
 <canvas id="dust" aria-hidden="true"></canvas>
 <nav><div class="w"><a href="#top" class="brand" id="brand">Kanish Goudam</a><div class="l"><a href="#projects">Projects</a><a href="#deq">Deq</a><a href="#stack">Skills</a><a href="#also">Experience</a><a href="#contact" class="blue">Contact</a></div><button class="burg" id="burg" aria-label="Menu" aria-expanded="false"><span></span><span></span></button></div></nav>
-<div class="mmenu" id="mmenu" aria-hidden="true"><ul><li><a href="#projects">Projects</a></li><li><a href="#deq">Deq</a></li><li><a href="#visionbrush">VisionBrush</a></li><li><a href="#how">How I work</a></li><li><a href="#stack">Skills</a></li><li><a href="#beyond">Beyond code</a></li><li><a href="#also">Experience</a></li><li><a href="#contact">Contact</a></li></ul></div>
+<div class="mmenu" id="mmenu" aria-hidden="true"><ul><li><a href="#projects">Projects</a></li><li><a href="#deq">Deq</a></li><li><a href="#visionbrush">VisionBrush</a></li><li><a href="#readycheck">ReadyCheck</a></li><li><a href="#how">How I work</a></li><li><a href="#stack">Skills</a></li><li><a href="#beyond">Beyond code</a></li><li><a href="#also">Experience</a></li><li><a href="#contact">Contact</a></li></ul></div>
 
 
 <header class="w hero" id="top">
@@ -401,7 +406,7 @@ section.w+section.w{margin-top:0}
    <svg class="art vbart2" viewBox="0 0 600 260" fill="none"><path d="M40 190 C 120 60, 200 60, 250 140 S 380 230, 430 120 S 540 40, 560 90" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle r="11" fill="currentColor"><animateMotion dur="6s" repeatCount="indefinite" path="M40 190 C 120 60, 200 60, 250 140 S 380 230, 430 120 S 540 40, 560 90"/></circle></svg>
   </article>
   <article class="slide s-light">
-   <header><div><h3>ReadyCheck</h3><p>Alert fatigue, solved with Honeywell.</p></div><div class="sb"><a class="o" href="#also">Learn more</a></div></header>
+   <header><div><h3>ReadyCheck</h3><p>Fewer alerts, with Honeywell Aerospace.</p></div><div class="sb"><a class="o" href="#readycheck">Learn more</a></div></header>
    <div class="art rcart"><span>Critical</span><span>Warning</span><span>Info</span><span>Info</span></div>
   </article>
  </div>
@@ -463,8 +468,20 @@ section.w+section.w{margin-top:0}
  </div>
 </section>
 
+<section class="w center" id="readycheck">
+ <p class="k rv">03 · Industry project — ReadyCheck</p>
+ <p class="hw rv">with <b>Honeywell Aerospace</b></p>
+ <h2 class="rv">Fewer alerts.<br><em>Faster decisions.</em></h2>
+ <p class="psub rv">First responders and aviation crews get so many alerts they start tuning them out. ReadyCheck helps them handle unclear problems on duty without the overload.</p>
+ <div class="steps rv">
+  <div><span class="n">50+</span><h4>Interviews</h4><p>Healthcare workers and first responders.</p></div>
+  <div><span class="n">Team 3</span><h4>Three people</h4><p>Built in ASU&rsquo;s Technology Innovation Lab.</p></div>
+  <div><span class="n">My part</span><h4>Market &amp; business</h4><p>I presented the market and business case in the final pitch.</p></div>
+ </div>
+</section>
+
 <section class="w center" id="how">
- <p class="k rv">03 · How I work</p>
+ <p class="k rv">04 · How I work</p>
  <h2 class="rv">I start with <span class="ac">the user.</span><br><em>Every skill I have followed.</em></h2>
  <p class="psub rv">I didn't learn tools and then look for problems. I found a problem, mapped how people actually move through it, and learned whatever the flow needed.</p>
  <div class="stkgrid five">
@@ -477,7 +494,7 @@ section.w+section.w{margin-top:0}
 </section>
 
 <section class="w center" id="stack">
- <p class="k rv">04 · My skills</p>
+ <p class="k rv">05 · My skills</p>
  <h2 class="rv">What I build with.</h2>
  <div class="stkgrid">
   <details class="stk rv"><summary><span class="k">Analysis & ML</span><h3>Python</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Data analysis in both analyst internships (Systech, AVS Livescape)</li><li>Analyzed the childcare dataset for my published paper</li><li>Daily use across my MS Data Science at ASU</li></ul></div></details>
@@ -493,7 +510,7 @@ section.w+section.w{margin-top:0}
 </section>
 
 <section class="w center" id="beyond">
- <p class="k rv">05 · Beyond code</p>
+ <p class="k rv">06 · Beyond code</p>
  <h2 class="rv">I study people.<br><em>Then I tell stories about it.</em></h2>
  <div class="stkgrid two">
   <details class="stk big rv"><summary><span class="k">Human psychology</span><h3>How people think</h3><span class="pl">+</span></summary><div class="ad"><ul><li>Self-taught in Jungian psychology and attachment theory</li><li>Behavioral psychology: habits, motivation, why people follow through or don't</li><li>It's why Deq exists. I design for how people actually behave, not how they say they do</li></ul></div></details>
@@ -502,10 +519,9 @@ section.w+section.w{margin-top:0}
 </section>
 
 <section class="w" id="also">
- <p class="k rv">06 · Experience</p>
+ <p class="k rv">07 · Experience</p>
  <h2 class="rv">Where I&rsquo;ve worked.</h2>
  <div class="rv" style="margin-top:24px">
-  <details class="arow"><summary><b>ReadyCheck × Honeywell</b><p>Alert fatigue, first responders</p><span class="k">2026</span></summary><div class="ad">A course project with Honeywell on alert fatigue: first responders and aviation crews get so many alerts they stop trusting them. We researched the problem and presented a system to Honeywell in Nov 2026.</div></details>
   <details class="arow"><summary><b>Psych for Life</b><p>Product Content Strategist</p><span class="k">2026</span></summary><div class="ad">ASU Psychology Department. I analyzed competitors' features and recommended product and marketing changes.</div></details>
   <details class="arow"><summary><b>Systech · AVS Livescape</b><p>Data analyst intern</p><span class="k">2024–25</span></summary><div class="ad">Two analyst internships in Chennai, working in SQL and Python.</div></details>
   <details class="arow"><summary><b>AIP Conf. Proc.</b><p>Co-author, published research</p><span class="k">2025</span></summary><div class="ad">&ldquo;Blockchain enhanced children healthcare.&rdquo; I did the data analysis on the childcare data. Presented at ICIRIAC 2024.</div></details>
